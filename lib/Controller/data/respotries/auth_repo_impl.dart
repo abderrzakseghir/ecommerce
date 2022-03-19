@@ -1,5 +1,6 @@
 import 'package:ecommerce/Controller/domain/respotries/respo_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl extends AuthRepo {
   @override
@@ -23,12 +24,12 @@ class AuthRepoImpl extends AuthRepo {
         await googleUser?.authentication;
 
     // Create a new credential
-    /* final credential = GoogleAuthProvider.credential(
+    final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
-    );*/
+    );
 
     // Once signed in, return the UserCredential
-    // return await FirebaseAuth.instance.signInWithCredential(credential);
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
